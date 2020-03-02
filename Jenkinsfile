@@ -20,7 +20,7 @@ pipeline {
         
           stage("Running Unittest") {
             steps {
-                sh "/usr/local/bin/nosetests tests/test_helloworld.py"
+                sh "/usr/local/bin/nosetests  /home/ps/PythonCICD/tests/test_helloworld.py"
                 
                 
             }
@@ -28,7 +28,7 @@ pipeline {
 
         stage("Package Installation") {
             steps {
-                sh "/usr/bin/pip3 install -r requirements.txt"
+                sh "/usr/bin/pip3 install -r /home/ps/PythonCICD/requirements.txt"
                 
             }
           } 
@@ -36,7 +36,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh "pwd"
-                sh "/usr/bin/python3  helloworld/app.py"
+                sh "/usr/bin/python3  /usr/local/bin/nosetests /home/ps/PythonCICD/helloworld/app.py"
                 
             }
             post {
