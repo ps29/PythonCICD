@@ -1,6 +1,6 @@
 #!/usr/local/bin/groovy
 pipeline {
-    agent { node { label 'master' } }
+    agent { node { label 'testing' } }
 
     environment {
         TEST_PREFIX = "test-IMAGE"
@@ -28,7 +28,7 @@ pipeline {
 
         stage("Package Installation") {
             steps {
-                sh "/usr/local/bin/pip install -r requirements.txt"
+                sh "/usr/bin/pip3 install -r requirements.txt"
                 
             }
           } 
@@ -36,7 +36,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh "pwd"
-                sh "/usr/local/bin/python  helloworld/app.py"
+                sh "/usr/bin/python3  helloworld/app.py"
                 
             }
             post {
